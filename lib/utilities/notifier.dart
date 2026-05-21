@@ -6,6 +6,7 @@ class UserNotifier extends ChangeNotifier {
   List<User> filteredUsers = [];
   String? selectedCompany='All';
   String currentQuery = '';
+  bool showClearButton = false;
 
   void setUsers(List<User> users) {
    allusers = users;
@@ -14,12 +15,14 @@ class UserNotifier extends ChangeNotifier {
 
   void updateSearchQuery(String query) {
     currentQuery = query;
+     showClearButton = query.isNotEmpty;
     applyFilterAndSort();
   }
 
   void updateCompanyFilter(String company) {
     selectedCompany = company;
-
+   
+    
     applyFilterAndSort();
   }
 
@@ -43,4 +46,6 @@ class UserNotifier extends ChangeNotifier {
 
     notifyListeners();
   }
+
+ 
 }

@@ -15,7 +15,7 @@ class _SearchScreenState extends State<SearchScreen> {
   late Future<List<User>> users;
 
   TextEditingController keyword = TextEditingController();
-  bool _showClearButton = false;
+  
 
   @override
   void initState() {
@@ -28,11 +28,12 @@ class _SearchScreenState extends State<SearchScreen> {
 
     keyword.addListener(() {
       _userNotifier.updateSearchQuery(keyword.text);
-      setState(() {
-        _showClearButton = keyword.text.isNotEmpty;
-      });
+   
     });
   }
+
+
+//testing
 
   @override
   void dispose() {
@@ -80,7 +81,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         borderSide: BorderSide(color: Colors.black, width: 1),
                       ),
                       suffixIcon:
-                          _showClearButton
+                          _userNotifier.showClearButton
                               ? IconButton(
                                 onPressed: () {
                                   keyword.clear();
